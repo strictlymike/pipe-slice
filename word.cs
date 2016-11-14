@@ -27,7 +27,7 @@ namespace line_word {
 				word_nrs.Add(parsed);
 			}
 
-			while ((line = Console.ReadLine()) != null) {
+			while ((line = NormalizeWS(Console.ReadLine())) != null) {
 				int j = 1;
 
 				string [] words = line.Split();
@@ -55,10 +55,11 @@ namespace line_word {
 			return 0;
 		}
 
-		static public int PrintWordNrs() {
+		static public int PrintWordNrs()
+		{
 			string line;
 			int i = 1;
-			while ((line = Console.ReadLine()) != null) {
+			while ((line = NormalizeWS(Console.ReadLine())) != null) {
 				int j = 1;
 
 				Console.WriteLine("Line {0}:", i);
@@ -72,6 +73,17 @@ namespace line_word {
 			}
 
 			return 0;
+		}
+
+		static public string NormalizeWS(string s) {
+			string ret;
+			if (s == null) {
+				ret = null;
+			} else {
+				ret = System.Text.RegularExpressions.Regex.Replace(s,
+						@"\s+"," ").Trim();
+			}
+			return ret;
 		}
 	}
 }
