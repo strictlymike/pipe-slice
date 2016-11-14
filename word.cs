@@ -75,7 +75,8 @@ namespace line_word {
 			return 0;
 		}
 
-		static public string NormalizeWS(string s) {
+		static public string NormalizeWS(string s)
+		{
 			string ret;
 			if (s == null) {
 				ret = null;
